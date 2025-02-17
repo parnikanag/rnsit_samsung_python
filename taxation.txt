@@ -38,7 +38,7 @@ esal=float(input("Enter Basic Monthly Salary:"))
 eallow=float(input("Enter Special Allowances (Monthly): "))
 ebonuspercent=float((input("Bonus Percentage (Annual Bonus as % of Gross Salary):")))
 gross_monthly_salary=esal+eallow
-annual_gross_salary = (gross_monthly_salary * 12) + (gross_monthly_salary * 12 * int(ebonuspercent) / 100)
+annual_gross_salary = (gross_monthly_salary * 12) + ((gross_monthly_salary * 12) * int(ebonuspercent) / 100)
 print("\n----- Employee Details -----")
 print(f"Name: {ename}")
 print(f"EmpID: {eid}")
