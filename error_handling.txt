@@ -1,1 +1,27 @@
+Error Handling:
 
+example 1: Type Error
+
+num = 50
+print("Num = " + num )
+---------------------------------------------------------------------------
+TypeError                                 Traceback (most recent call last)
+Cell In[19], line 2
+      1 num = 50
+----> 2 print("Num = " + num )
+
+TypeError: can only concatenate str (not "int") to str
+
+
+example 2: Name Error
+
+num = 50
+print("Num = " + num1 )
+
+---------------------------------------------------------------------------
+NameError                                 Traceback (most recent call last)
+Cell In[21], line 2
+      1 num = 50
+----> 2 print("Num = " + num1 )
+
+NameError: name 'num1' is not defined
