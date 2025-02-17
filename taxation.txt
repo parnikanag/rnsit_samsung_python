@@ -47,3 +47,8 @@ print(f"Basic Monthly Salary: {esal}")
 print(f"Special Allowances : {eallow}")
 print(f"Gross Monthly Salary: {gross_monthly_salary}")
 print(f"Annual Gross Salary (including Bonus): {annual_gross_salary}")
+standard_deduction = 50000
+if annual_gross_salary > standard_deduction  :
+    taxableincome = annual_gross_salary-float(standard_deduction) 
+    print(f"Standard_deduction : {standard_deduction }")
+    print(f"Taxable Income : {taxableincome}")
