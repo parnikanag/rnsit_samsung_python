@@ -1,5 +1,5 @@
 Error Handling:
-
+ 
 example 1: Type Error
 
 num = 50
