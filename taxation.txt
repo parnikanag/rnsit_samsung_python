@@ -1,4 +1,5 @@
-Tax Calculator Problem
+Tax Calculator Problem:
+
 GlobalNext Solutions, a rapidly growing IT company, employs a diverse workforce ranging from entry-
 level developers to senior executives. The HR department wants to streamline the tax calculation
 process for employees under the New Tax Regime (2023). They’ve decided to build a tax calculation
