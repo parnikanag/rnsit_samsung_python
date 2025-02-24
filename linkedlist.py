@@ -98,15 +98,10 @@ class LinkedList:
 
 def menu():
     print("\nChoose an operation:")
-    print("1. Insert an element at the front (ins_front)")
-    print("2. Insert an element at the rear (ins_rear)")
-    print("3. Insert an element at a specific position (ins_pos)")
-    print("4. Delete an element from the front (del_front)")
-    print("5. Delete an element from the rear (del_rear)")
-    print("6. Delete an element from a specific position (del_pos)")
-    print("7. Reverse the list")
-    print("8. Print the list")
-    print("9. Exit")
+    print("1) Insert an element at the front\n2) Insert an element at the rear\n3) Insert an element at a specific position")
+    print("4)Delete an element from the front\n5)Delete an element from the rear\n6) Delete an element from a specific position")
+    print("7)Reverse the list\n8) Display the list\n9) Exit")
+
 
 def main():
     llist = LinkedList()
