@@ -18,7 +18,7 @@ class LinkedList:
                 return
             current = current.next
         if not current: 
-            return
+            return 
         node.next, current.next = current.next, node
 
     def delete_at_position(self, pos):
@@ -27,7 +27,7 @@ class LinkedList:
             self.head = self.head.next
             return
         current = self.head
-        for _ in range(pos - 1):
+        for p in range(pos - 1):
             if not current.next: return
             current = current.next
         if not current.next: return
