@@ -1,141 +1,118 @@
 class Node:
     def __init__(self, data):
         self.data = data
-        self.link = None
+        self.next = None
 
 class LinkedList:
     def __init__(self):
         self.head = None
+        self.rear = None
 
-    def ins_front(self, data):
+    def insert_front(self, data):
         new_node = Node(data)
-        new_node.link = self.head
+        new_node.next = self.head
         self.head = new_node
+        if self.rear is None:
+            self.rear = new_node
 
-    def ins_rear(self, data):
+    def insert_rear(self, data):
         new_node = Node(data)
         if not self.head:
             self.head = new_node
-            return
-        last = self.head
-        while last.link:
-            last = last.link
-        last.link = new_node
+            self.rear = new_node
+        else:
+            new_node.next = self.rear.next
+            self.rear.next = new_node
+            self.rear = new_node
 
-    def ins_pos(self, data, pos):
+    def insert_at_position(self, data, pos):
         if pos == 0:
-            self.ins_front(data)
+            self.insert_front(data)
             return
         new_node = Node(data)
         current = self.head
         count = 0
         while current and count < pos - 1:
-            current = current.link
+            current = current.next
             count += 1
         if current is None:
-            print("Position out of range.")
+            print("Position not in range")
             return
-        new_node.link = current.link
-        current.link = new_node
+        new_node.next = current.next
+        current.next = new_node
 
-    def del_front(self):
+    def delete_front(self):
         if not self.head:
-            print("List is empty.")
+            print("List is empty")
             return
-        self.head = self.head.link
+        print(self.head.data)
+        self.head = self.head.next
+        if self.head is None:
+            self.rear = None
 
-    def del_rear(self):
+    def delete_rear(self):
         if not self.head:
-            print("List is empty.")
+            print("List is empty")
             return
-        if self.head.link is None:
-            self.head = None
+        if self.head == self.rear:
+            print(self.head.data)
+            self.head = self.rear = None
             return
         current = self.head
-        while current.link and current.link.link:
-            current = current.link
-        current.link = None
+        while current.next and current.next != self.rear:
+            current = current.next
+        print(self.rear.data)
+        current.next = None
+        self.rear = current
 
-    def del_pos(self, pos):
+    def delete_at_position(self, pos):
         if not self.head:
-            print("List is empty.")
+            print("List is empty")
             return
         if pos == 0:
-            self.del_front()
+            self.delete_front()
             return
         current = self.head
         count = 0
-        while current.link and count < pos - 1:
-            current = current.link
+        while current.next and count < pos - 1:
+            current = current.next
             count += 1
-        if current.link is None:
-            print("Position out of range.")
+        if current.next is None:
+            print("Position not in range")
             return
-        current.link = current.link.link
+        print(current.next.data)
+        current.next = current.next.next
+        if current.next is None:
+            self.rear = current
 
     def reverse(self):
+        print("Before reversing:", end=" ")
+        self.display()
         prev = None
         current = self.head
         while current:
-            next_node = current.link
-            current.link = prev
+            next_node = current.next
+            current.next = prev
             prev = current
             current = next_node
         self.head = prev
+        print("After reversing:", end=" ")
+        self.display()
 
-    def print_list(self):
+    def display(self):
         current = self.head
         if not current:
-            print("List is empty.")
+            print("List is empty")
             return
         while current:
-            if current.link:
-                print(current.data, end=" -> ")
-            else:
-                print(current.data, end="")
-            current = current.link
+            print(current.data, end=" -> " if current.next else "")
+            current = current.next
         print()
 
-def menu():
+def show_menu():
     print("\nChoose an operation:")
-    print("1) Insert an element at the front\n2) Insert an element at the rear\n3) Insert an element at a specific position")
-    print("4)Delete an element from the front\n5)Delete an element from the rear\n6) Delete an element from a specific position")
-    print("7)Reverse the list\n8) Display the list\n9) Exit")
+    print("1) Insert at front\n2) Insert at rear\n3) Insert at a position")
+    print("4) Delete from front\n5) Delete from rear\n6) Delete from a position")
+    print("7) Reverse the list\n8) Display the list\n9) Exit")
 
-
-def main():
-    llist = LinkedList()
-    
-    while True:
-        menu()
-        choice = input("Enter your choice: ")
-        
-        if choice == "1":
-            data = int(input("Enter the data to insert at front: "))
-            llist.ins_front(data)
-        elif choice == "2":
-            data = int(input("Enter the data to insert at rear: "))
-            llist.ins_rear(data)
-        elif choice == "3":
-            data = int(input("Enter the data to insert: "))
-            pos = int(input("Enter the position to insert at: "))
-            llist.ins_pos(data, pos)
-        elif choice == "4":
-            llist.del_front()
-        elif choice == "5":
-            llist.del_rear()
-        elif choice == "6":
-            pos = int(input("Enter the position to delete from: "))
-            llist.del_pos(pos)
-        elif choice == "7":
-            llist.reverse()
-        elif choice == "8":
-            llist.print_list()
-        elif choice == "9":
-            print("Exiting the program.")
-            break
-        else:
-            print("Invalid choice. Please try again.")
-
-if __name__ == "__main__":
-    main()
+main()
