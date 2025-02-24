@@ -13,10 +13,12 @@ class LinkedList:
             node.next, self.head = self.head, node
             return
         current = self.head
-        for _ in range(pos - 1):
-            if not current: return
+        for p in range(pos - 1):
+            if not current: 
+                return
             current = current.next
-        if not current: return
+        if not current: 
+            return
         node.next, current.next = current.next, node
 
     def delete_at_position(self, pos):
